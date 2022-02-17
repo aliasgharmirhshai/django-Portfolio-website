@@ -21,7 +21,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('cv.urls')),
+    path('', include('contact.urls')),
 ]
+
+handler404 = "Portfolio.views.page_not_found_view"
 
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
