@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Hello Resume</h1>
+
+    {% for resume in resume %}
+        <h1>{{resume.company_name}}</h1>
+        <img src="{{ resume.image.url }}" alt="img" width="100">
+    {% endfor %}
+
 {% endblock content %}

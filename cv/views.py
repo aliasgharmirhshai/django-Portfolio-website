@@ -1,8 +1,6 @@
-from importlib.resources import path
-from urllib import request
-from django import views
 from django.shortcuts import render
 from django.views import View
+from .models import ResumeDetial, ProjectDetial
 # Create your views here.
 
 
@@ -15,9 +13,10 @@ class HomeView(View):
 
 class ResumeView(View):
     template_name = 'cv/resume.html'
-    
+
     def get(self, request):
-        return render(request, self.template_name)
+        resume = ResumeDetial.objects.all()
+        return render(request, self.template_name, {'resume':resume})
 
 
 class ResumeDetialView(View):
@@ -31,7 +30,8 @@ class ProjectView(View):
     template_name = 'cv/project.html'
     
     def get(self, request):
-        return render(request, self.template_name)
+        project = ProjectDetial.objects.all()
+        return render(request, self.template_name, {'project':project})
 
 
 class ProjectDetialView(View):
