@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import ResumeDetial, ProjectDetial
 # Create your views here.
@@ -22,8 +22,9 @@ class ResumeView(View):
 class ResumeDetialView(View):
     template_name = 'cv/resume-detial.html'
     
-    def get(self, request):
-        return render(request, self.template_name)
+    def get(self, request, resume_id, resume_slug):
+        resumes = ResumeDetial.objects.get(pk=resume_id, slug=resume_slug)
+        return render(request, self.template_name, {'resumes':resumes})
 
 
 class ProjectView(View):
@@ -37,8 +38,9 @@ class ProjectView(View):
 class ProjectDetialView(View):
     template_name = 'cv/project-detial.html'
     
-    def get(self, request):
-        return render(request, self.template_name)
+    def get(self, request, project_id, projects_slug):
+        projects = ProjectDetial.objects.get(pk=project_id, slug=projects_slug)
+        return render(request, self.template_name, {"projects":projects})
 
 
 class ContactView(View):

@@ -4,5 +4,6 @@
     {% for project in project %}
         <h1>{{project.project_name}}</h1>
         <img src="{{ project.project_image.url }}" alt="img" width="100">
+        <a href="{{project.get_absolute_url}}" class="btn btn-primary">See More</a>
     {% endfor %}
 {% endblock content %}

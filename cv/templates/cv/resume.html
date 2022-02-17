@@ -5,6 +5,7 @@
     {% for resume in resume %}
         <h1>{{resume.company_name}}</h1>
         <img src="{{ resume.image.url }}" alt="img" width="100">
+        <a href="{{resume.get_absolute_url}}" class="btn btn-primary">See More</a>
     {% endfor %}
 
 {% endblock content %}
